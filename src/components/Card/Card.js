@@ -1,6 +1,7 @@
-import react, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Card.module.css';
 import api from '../../services/api.js';
+import { Link } from 'react-router-dom';
 
 const Card = ({ name }) => {
   const [pokemonData, setPokemonData] = useState(null);
@@ -15,18 +16,21 @@ const Card = ({ name }) => {
 
   useEffect(() => {
     getPokemon();
-  }, name);
+  }, [name]);
   return (
     <>
       {pokemonData && (
-        <div className={styles.card}>
-          <p>Nome: {pokemonData.name} </p>
-          <p>#{pokemonData.id} </p>
-          <img
-            style={{ width: '100px' }}
-            src={pokemonData.sprites.other['official-artwork'].front_default}
-          />
-        </div>
+        <Link to={`details/${pokemonData.id}`} key={pokemonData.id}>
+          <div className={styles.card}>
+            <p>Nome: {pokemonData.name} </p>
+            <p>#{pokemonData.id} </p>
+            <img
+              style={{ width: '100px' }}
+              src={pokemonData.sprites.other['official-artwork'].front_default}
+              alt={pokemonData.name}
+            />
+          </div>
+        </Link>
       )}
     </>
   );

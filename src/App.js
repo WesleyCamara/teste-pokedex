@@ -1,13 +1,15 @@
-import react from 'react';
-import Card from './components/Card/Card';
 import List from './components/List/List';
+import Details from './components/Details/Details';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <List />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<List />} />
+        <Route path="details/:id" element={<Details />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
-
+};
 export default App;

@@ -1,0 +1,12 @@
+.card{
+  background-color: aquamarine;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
